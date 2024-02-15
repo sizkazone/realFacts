@@ -25,7 +25,7 @@ async function pushRandomCatName(repoOwner, token) {
         //Get all files from the repo
         const branchFilesData = await octokit.rest.repos.getContent({
             owner: repoOwner,
-            repo: 'randomCatFacts',
+            repo: 'realFacts',
             branch: 'main',
         });
 
@@ -51,15 +51,15 @@ async function pushRandomCatName(repoOwner, token) {
         // Push file to the repo
         await octokit.rest.repos.createOrUpdateFileContents({
             owner: repoOwner,
-            repo: 'randomCatFacts',
+            repo: 'realFacts',
             path: randomName,
             message: 'Another great day with great cat fact',
             content: Buffer.from(fact).toString('base64'),
             branch: 'main',
         });
-        console.log('Pushed fact to randomCatFacts');
+        console.log('Pushed fact to realFacts');
     } catch (error) {
-        console.error('Error pushing fact to randomCatFacts', error);
+        console.error('Error pushing fact to realFacts', error);
     }
 }
 
